@@ -33,50 +33,49 @@ vards_entry = ttk.Entry(frame, textvariable=vards)
 vards_entry.grid(column=1, row=0, **options)
 vards_entry.focus()
 
-skaits = tk.StringVar()
+skaits = tk.IntVar()
 skaits_entry = ttk.Entry(frame, textvariable=skaits)
 skaits_entry.grid(column=1, row=1, **options)
 skaits_entry.focus()
 
-tips = tk.StringVar()
-tips_entry = ttk.Entry(frame, textvariable=tips)
-tips_entry.grid(column=1, row=2, **options)
-tips_entry.focus()
-
-cena = tk.StringVar()
+cena = tk.IntVar()
 cena_entry = ttk.Entry(frame, textvariable=cena)
 cena_entry.grid(column=1, row=3, **options)
 cena_entry.focus()
 
-#jaizlabo viss lejā
 
-
-
-#
+#dropbox menu
 selected_type = tk.StringVar()
-selected_type.set("Vīrietis") #Default
+selected_type.set("Dators") #Default
 
 # izvēles iespējas
-gender_options = ["Vīrietis", "Sieviete", "Cits"]
+type_options = ["Dators", "Programmatūra"]
 
 # OptionMenu
-gender_dropdown = tk.OptionMenu(frame, selected_gender, *gender_options)
-gender_dropdown.grid(column=1, row=1, **options)
+type_dropdown = tk.OptionMenu(frame, selected_type, *type_options)
+type_dropdown.grid(column=1, row=2, **options)
 
-# cita dzimuma rakstīšanai (sākumā paslēpts)
-custom_gender_label = ttk.Label(frame, text="Cits dzimums:")
-custom_gender = tk.StringVar()
-custom_gender_entry = ttk.Entry(frame, textvariable=custom_gender)
-
-#
-
-
-
-#līdz šejienei
 
 #funkcijas
 def pievienot_sarakstam():
-    print("hello world")
+    tips = selected_type.get()
+    nosaukums = vards.get()
+    daudzums = skaits.get()
+    Cena = cena.get()
+    visi_datori.append(dators(nosaukums, daudzums, tips, Cena))
+    nomainit_sarakstu()
+    print("asyasukfyagwkfuyagwfui")
+
+
+# Listbox
+listbox = tk.Listbox(frame, height=6, selectmode=tk.EXTENDED)
+listbox.grid(column=1, row=4, **options)
+
+# listboxa atjaunināšana
+def nomainit_sarakstu():
+    listbox.delete(0, END)
+    for Dators in visi_datori:
+        listbox.insert(END, "{}, {}, {}, {}".format(Dators.name, Dators.count, Dators.type, Dators.price))
 
 #Buttons
 vards_button = ttk.Button(frame, text='Pievienot sarakstam', command=pievienot_sarakstam)
@@ -87,7 +86,7 @@ vards_button.grid(column=2, row=0, sticky='W', **options)
 
 
 
-print("hello wowlrtd")
+
 
 frame.grid(padx=10, pady=10)
 
