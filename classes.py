@@ -4,10 +4,11 @@ class dators:
         self.count = skaits
         self.type = tips
         self.price = cena
-
     def info(self):
         return "{}, {}, {}, {}".format(self.name, self.count, self.type, self.price)
-    
+    def DatorsNopirkts(self):
+        self.count -=1
+    def Piegade(self):
+        self.count +=1
 
-    
 
