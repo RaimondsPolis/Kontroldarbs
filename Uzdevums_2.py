@@ -1,6 +1,7 @@
 from classes import dators
 import tkinter as tk
 from tkinter import ttk, END
+from tkinter import *
 
 visi_datori = []
 
@@ -47,48 +48,21 @@ cena_entry = ttk.Entry(frame, textvariable=cena)
 cena_entry.grid(column=1, row=3, **options)
 cena_entry.focus()
 
+#Create the option and Check Button Event
+def OptionMenu_CheckButton(event):
+   print(var.get())
+   pass
 
-#dropbox menu
-selected_type = tk.StringVar()
-
-# izvēles iespējas
-type_options = ["Dators/Detaļa", "Programmatūra"]
-
-# OptionMenu
-type_dropdown = tk.OptionMenu(frame, selected_type, *type_options)
-type_dropdown.grid(column=1, row=2, **options)
-
-
-
-
-#NESTRAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
-Kompanija_label = ttk.Label(frame, text="Cits dzimums:")
-Kompanija = tk.StringVar()
-Kompanija_entry = ttk.Entry(frame, textvariable=Kompanija)
-
-# parādīt/paslēpt cita dzimuma rakstīšanas lauku
-def update_Kompanija_option(value):
-    print("kobla")
-    if value == "Dators/Detaļa":
-        Kompanija_label.grid(column=0, row=3, sticky='W', **options)
-        Kompanija_entry.grid(column=1, row=3, **options)
-        listbox.grid(column=1, row=5, **options)
-        cena_entry.grid(column=1, row=4, **options)
-        print("test")
-    else:
-        Kompanija_label.grid_forget()
-        Kompanija_entry.grid_forget()
-
-Kompanija.trace_add("write", lambda *args: update_Kompanija_option(Kompanija.get()))
-
-#NESTRAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
+#Create the variables
+var = StringVar();var.set("1")
+options = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+OptionMenu(tk, var, *(options), command =
+OptionMenu_CheckButton).pack()
 
 
 #funkcijas
 def pievienot_sarakstam():
-    tips = selected_type.get()
+    tips = var.get()
     nosaukums = vards.get()
     daudzums = skaits.get()
     Cena = cena.get()
