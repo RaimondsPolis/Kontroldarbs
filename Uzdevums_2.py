@@ -48,16 +48,28 @@ cena_entry = ttk.Entry(frame, textvariable=cena)
 cena_entry.grid(column=1, row=3, **options)
 cena_entry.focus()
 
+razotajs_label = ttk.Label(frame, text='Ražotajs: ')
+razotajs_label.grid(column=4, row=0, sticky='W', **options)
+
+
+#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 #Create the option and Check Button Event
 def OptionMenu_CheckButton(event):
    print(var.get())
+   if var == "Dators/Detaļa":
+        razotajs_label = ttk.Label(frame, text='Ražotajs: ')
+        razotajs_label.grid(column=4, row=0, sticky='W', **options)
+       cena_label.grid(column=0, row=4, sticky='W', **options)
+       listbox.grid(column=1, row=5, **options)
+    else:
+       
    pass
-
+#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 #Create the variables
-var = StringVar();var.set("1")
-options = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-OptionMenu(tk, var, *(options), command =
-OptionMenu_CheckButton).pack()
+var = StringVar();var.set("Dators/Detaļa")
+options1 = ["Dators/Detaļa","Programmatūra"]
+OptionMenu(frame, var, *(options1), command =
+OptionMenu_CheckButton).grid(column=1, row= 2, **options)
 
 
 #funkcijas
